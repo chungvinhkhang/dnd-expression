@@ -1,0 +1,16 @@
+.expression-item {
+    text-align: center;
+    line-height: 30px;
+    padding: 0px 6px;
+    display: inline-flex;
+    border-radius: 20px;
+    margin: 2px;
+}
+
+.expression-item.operand {
+    background-color: #FFDFD3;
+}
+
+.expression-item.operator {
+    background-color: #5FE6D0;
+}

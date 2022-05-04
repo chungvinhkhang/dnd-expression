@@ -1,0 +1,17 @@
+ul.operator-list {
+    list-style: none;
+    display: flex;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+ul.operator-list > li {
+    margin-right: 20px;
+}
+
+ul.operator-list > li > span {
+    background-color: white;
+    border: 1px solid gray;
+    display: inline-block;
+    padding: 5px 10px;
+}

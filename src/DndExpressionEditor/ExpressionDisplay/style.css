@@ -1,0 +1,23 @@
+.expression-display {
+    background-color: white;
+    min-height: 23px;
+    border: 1px solid black;
+}
+
+.expression-display-item {
+    margin: 0 1px;
+    font-size: 1.1em;
+}
+
+.expression-display-item.operand {
+    background-color: #FFDFD3;
+}
+
+.expression-display-item.operator {
+    background-color: #5FE6D0;
+}
+
+.expression-display .switch-edit-mode{
+    float: right;
+    margin: 1px;
+}

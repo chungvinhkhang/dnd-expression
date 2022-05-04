@@ -1,0 +1,18 @@
+.param-panel {
+    border: 1px solid lightgrey;
+    margin-top: 5px;
+}
+
+ul.param-tree {
+    margin: 0;
+    padding: 0;
+}
+
+ul.param-tree li {
+    list-style: none;
+    padding-left: 30px;
+    padding-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+

@@ -1,0 +1,12 @@
+.droppable-expression {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid lightgrey;
+    
+}
+
+.remove-item {
+    font-size: 9px;
+    margin-left: 10px;
+    color: gray;
+}
