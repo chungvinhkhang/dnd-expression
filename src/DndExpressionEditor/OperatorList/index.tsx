@@ -10,7 +10,7 @@ export interface FormulaEditorProp {
 const OperatorList = ({operators, onDragStart}: FormulaEditorProp) => <ul className='operator-list'>
 {operators && operators.map((op, index) => (
     <li key={`operator-${index}`}>
-        <span onDragStart={(e) => onDragStart(e, op)} draggable>{op.name}</span>
+        <span onDragStart={(e) => onDragStart(e, op)} draggable>{op}</span>
     </li>
 ))}
 </ul>;

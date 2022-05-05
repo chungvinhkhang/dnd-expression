@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
 import DndExpressionEditor from './DndExpressionEditor';
-import { Operand, Operator } from './DndExpressionEditor/Base';
+import { ExpressionItem } from './DndExpressionEditor/Base';
 import { Param } from './DndExpressionEditor/ParamTree';
 import _params from './params.json';
 
 const params = _params as Param[];
 
 function App() {
-  const [expression, setExpression] = useState<(Operand | Operator)[]>([]);
+  const [expression, setExpression] = useState<ExpressionItem[]>([]);
   return (
     <div className="App">
       <form>

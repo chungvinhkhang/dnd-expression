@@ -1,4 +1,4 @@
-import { isOperator, Operand, Operator } from "../Base";
+import { ExpressionItem, isOperator } from "../Base";
 
 function validateExpressionWithX(expressionStr: string, xvalue: number = 1): string | null {
     if(!expressionStr)
@@ -15,7 +15,7 @@ function validateExpressionWithX(expressionStr: string, xvalue: number = 1): str
     }
 }
 
-export function validateExpression(expression: (Operand | Operator)[]): string | null {
-    const expressionStr = expression.reduce<string[]>((prev, curr) => [...prev, (isOperator(curr) ? curr.name : 'x')], []).join('');
+export function validateExpression(expression: ExpressionItem[]): string | null {
+    const expressionStr = expression.reduce<string[]>((prev, curr) => [...prev, (isOperator(curr) ? curr : 'x')], []).join('');
     return validateExpressionWithX(expressionStr);
 }

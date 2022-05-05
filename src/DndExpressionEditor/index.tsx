@@ -1,5 +1,5 @@
 import React, { useState, DragEvent, MouseEvent } from 'react';
-import { Operand, Operator, Operators } from './Base';
+import { ExpressionItem, Operators } from './Base';
 import DroppableExpression from './DroppableExpression';
 import ExpressionDisplay from './ExpressionDisplay';
 import './style.css';
@@ -8,9 +8,9 @@ import ParamTree, { Param } from './ParamTree';
 import { validateExpression } from './JsExpressionValidator/validator';
 
 export interface DndExpressionEditorProp {
-    value: (Operand | Operator)[];
+    value: ExpressionItem[];
     params: Param[];
-    onSave: (expression: (Operand | Operator)[]) => void;
+    onSave: (expression: ExpressionItem[]) => void;
 }
 
 export interface ParamProp {
@@ -18,13 +18,11 @@ export interface ParamProp {
     items: ParamProp[];
 }
 
-const allOperators = Object.keys(Operators).map(p => Operators[p]);
-
 const DndExpressionEditor = ({ value, params, onSave }: DndExpressionEditorProp) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [expression, setExpression] = useState<(Operand | Operator)[]>(value);
+    const [expression, setExpression] = useState<ExpressionItem[]>(value);
 
-    const handleDrag = (e: DragEvent, item: Operand | Operator) => {
+    const handleDrag = (e: DragEvent, item: ExpressionItem) => {
         if (e.dataTransfer) {
             e.dataTransfer.setData("text", JSON.stringify(item));
         }
@@ -32,7 +30,7 @@ const DndExpressionEditor = ({ value, params, onSave }: DndExpressionEditorProp)
     const handleDrop = (e: DragEvent, index?: number) => {
         e.preventDefault();
         const opString = e.dataTransfer.getData("text");
-        const op: Operand | Operator = JSON.parse(opString);
+        const op: ExpressionItem = JSON.parse(opString);
         setExpression(oldexpression => {
             if (index !== undefined) {
                 return [
@@ -48,7 +46,7 @@ const DndExpressionEditor = ({ value, params, onSave }: DndExpressionEditorProp)
     const handleDragOver = (e: DragEvent) => {
         e.preventDefault();
     };
-    const handleRemoveItemClick = (e: MouseEvent<HTMLSpanElement>, item: (Operand | Operator), index: number) => {
+    const handleRemoveItemClick = (e: MouseEvent<HTMLSpanElement>, item: ExpressionItem, index: number) => {
         setExpression(oldexpression => oldexpression.filter((_, i) => i !== index));
     };
     const handleSaveClick = () => {
@@ -66,7 +64,7 @@ const DndExpressionEditor = ({ value, params, onSave }: DndExpressionEditorProp)
         {isEditing && <div>
             {shading}
             <div className="expression-editor-wrapper">
-                <OperatorList operators={allOperators} onDragStart={handleDrag} />
+                <OperatorList operators={Operators} onDragStart={handleDrag} />
                 <DroppableExpression
                     items={expression}
                     onDragOver={(e) => handleDragOver(e)}
